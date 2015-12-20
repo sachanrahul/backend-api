@@ -1,0 +1,10 @@
+com/myadvocate/model/Saying.class
+com/myadvocate/mappers/ResourceMapper.class
+com/myadvocate/MyAdvocateConfiguration.class
+com/myadvocate/model/Resource.class
+com/myadvocate/resources/ExampleResource.class
+com/myadvocate/MyAdvocateApplication.class
+com/myadvocate/health/ExampleHealthCheck.class
+com/myadvocate/dao/ResourceDAO.class
+com/myadvocate/MyAdvocateApplication$1.class
+com/myadvocate/resources/ResourceResource.class
