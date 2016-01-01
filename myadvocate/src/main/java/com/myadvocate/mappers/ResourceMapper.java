@@ -21,7 +21,7 @@ import java.sql.SQLException;
  */
 public class ResourceMapper implements ResultSetMapper<Resource> {
     @Override
-    public Resource map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
-        return new Resource(resultSet.getLong("id"), resultSet.getString("first_name"),resultSet.getString("last_name"),resultSet.getString("e_position"));
+    public Resource map(int i, ResultSet r, StatementContext statementContext) throws SQLException {
+        return new Resource(r.getLong("id"), r.getString("first_name"),r.getString("last_name"),r.getString("e_position"));
     }
 }

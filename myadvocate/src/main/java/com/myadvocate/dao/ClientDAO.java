@@ -2,16 +2,12 @@ package com.myadvocate.dao;
 
 import com.myadvocate.mappers.ClientMappre;
 import com.myadvocate.model.Client;
+import io.dropwizard.cli.Cli;
 import org.skife.jdbi.v2.sqlobject.BindBean;
 import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
-import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
-import com.google.common.base.Optional;
-import org.skife.jdbi.v2.sqlobject.Bind;
 import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapper;
-import org.skife.jdbi.v2.sqlobject.customizers.SingleValueResult;
-import com.myadvocate.mappers.ResourceMapper;
-import com.myadvocate.model.Resource;
 
 import java.util.List;
 
@@ -22,11 +18,13 @@ import java.util.List;
 @RegisterMapper(ClientMappre.class)
 public interface ClientDAO {
 
-    @SqlQuery("SELECT * FROM client")
+    String tableName = "ad_advocate_profile";
+    @SqlQuery("SELECT * FROM " + tableName)
     List<Client> findAllClient();
 
-    @SqlQuery("select * from client(:client.fname,:client.mname,:client.lname,:client.age,:client.experience,:client.address)")
+    @SqlUpdate("insert into "+ tableName +" (name,age,experience,address,city,state,image,office_add,contact_no,email,dob,gender) " +
+            "values(:p.name,:p.age,:p.experience,:p.address,:p.city,:p.state,:p.image,:p.office_add,:p.contact_no,:p.email,:p.dob,:p.gender)")
     @GetGeneratedKeys
-    public int addClient(@BindBean("client") Client client);
+    public long addClient1(@BindBean("p") Client client);
 
 }

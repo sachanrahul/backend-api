@@ -13,7 +13,19 @@ import java.sql.SQLException;
  */
 public class ClientMappre implements ResultSetMapper<Client>{
     @Override
-    public Client map(int i, ResultSet resultSet, StatementContext statementContext) throws SQLException {
-        return new Client(resultSet.getString("fName"), resultSet.getString("mName"), resultSet.getString("lName"),resultSet.getInt("age"),resultSet.getFloat("experience"),resultSet.getString("address"));
+    public Client map(int i, ResultSet r, StatementContext statementContext) throws SQLException {
+        return new Client(r.getInt("profile_id"),
+                r.getString("name"),
+                r.getInt("age"),
+                r.getFloat("experience"),
+                r.getString("address"),
+                r.getString("city"),
+                r.getString("state"),
+                r.getString("image"),
+                r.getString("office_add"),
+                r.getString("contact_no"),
+                r.getString("email"),
+                r.getDate("dob"),
+                r.getString("gender"));
     }
 }
